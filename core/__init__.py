@@ -58,6 +58,7 @@ def set_activate():
 
 @app.route("/set_fields", methods=["POST"])
 def set_fields():
+	import pdb;pdb.set_trace()
 	if service_obj is None:
 		raise Exception("Service is not undefined.")
 
@@ -75,6 +76,7 @@ def set_fields():
 	thread.daemon = True
 	thread.start()
 
+	print("return")
 	return api_result("ok", False)
 
 @app.route("/get_fields", methods=["POST"])
