@@ -21,12 +21,10 @@ class Service:
 	def set_fields_handler(self, group_id, fields):
 		self.set_fields(group_id, fields)
 
-		cur_val = self.get_varible(group_id, "simple_varible")
+		cur_val = self.get_varible(group_id, "btc")
 		if cur_val is None:
-			self.create_varible(group_id, "simple_varible", "str")
+			self.create_varible(group_id, "btc", "float")
 
-		print(group_id, "simple_varible", fields["simple_field"])
-		self.set_varible(group_id, "simple_varible", fields["simple_field"])
 		return "ok", True
 	
 
