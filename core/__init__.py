@@ -2,6 +2,7 @@ import threading
 import json
 
 from core.service import Service
+import requests
 
 from flask import Flask, request
 
