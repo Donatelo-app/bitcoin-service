@@ -27,7 +27,7 @@ class Service:
 			self.create_varible(group_id, "btc", "float")
 
 
-		new_btc_value = float(core.bitcoin_balance(group_id))
+		new_btc_value = float(core.bitcoin_balance(fields["bitcoin_adress"]))
 		self.set_varible(group_id, "btc", new_btc_value)
 		self.update_image(group_id)
 
