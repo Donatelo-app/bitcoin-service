@@ -24,7 +24,7 @@ def bitcoin_balance(address):
 def update_cover():
 	groups = Service.mongo.find_all({"activation":True})
 	for group in groups:
-		new_btc_value = float(bitcoin_balance(group["fields"]["bitcoin-adress"]))
+		new_btc_value = float(bitcoin_balance(group["fields"]["bitcoin_adress"]))
 		old_btc_value = service.get_varible(group["group_id"], "btc")
 		
 		if new_btc_value == old_btc_value:
