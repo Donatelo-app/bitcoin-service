@@ -28,8 +28,8 @@ class Service:
 
 
 		new_btc_value = float(core.bitcoin_balance(group_id))
-		self.set_varible(group["group_id"], "btc", new_btc_value)
-		self.update_image(group["group_id"])
+		self.set_varible(group_id, "btc", new_btc_value)
+		self.update_image(group_id)
 
 		return "ok", True
 	
