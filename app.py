@@ -16,7 +16,7 @@ def bitcoin_balance(address):
 		res = requests.get("https://blockchain.info/ticker").json()
 
 		# currency = res["RUB"]["buy"]
-		return round(balance/10**8,2)
+		return balance/10**8
 	except Exception:
 		return 0
 
@@ -24,7 +24,7 @@ def bitcoin_balance(address):
 @app.route("/update_cover")
 def update_cover():
 	for group in service.mongo.find({"activation":True}):
-		new_btc_value = int(bitcoin_balance(group["fields"]["bitcoin_adress"]))
+		new_btc_value = float(bitcoin_balance(group["fields"]["bitcoin_adress"]))
 		old_btc_value = service.get_varible(group["group_id"], "btc")
 		
 		if new_btc_value == old_btc_value:
