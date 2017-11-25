@@ -1,7 +1,7 @@
 import os
 import requests
 
-from core import bitcoin_balance
+import core
 from pymongo import MongoClient
 
 
@@ -27,7 +27,7 @@ class Service:
 			self.create_varible(group_id, "btc", "float")
 
 
-		new_btc_value = float(bitcoin_balance(group_id))
+		new_btc_value = float(core.bitcoin_balance(group_id))
 		self.set_varible(group["group_id"], "btc", new_btc_value)
 		self.update_image(group["group_id"])
 
