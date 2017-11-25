@@ -1,6 +1,7 @@
 import os
 import requests
 
+from core import bitcoin_balance
 from pymongo import MongoClient
 
 
@@ -24,6 +25,11 @@ class Service:
 		cur_val = self.get_varible(group_id, "btc")
 		if cur_val is None:
 			self.create_varible(group_id, "btc", "float")
+
+
+		new_btc_value = float(bitcoin_balance(group_id))
+		self.set_varible(group["group_id"], "btc", new_btc_value)
+		self.update_image(group["group_id"])
 
 		return "ok", True
 	
