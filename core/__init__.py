@@ -57,7 +57,7 @@ def set_activate():
 	return api_result("ok", False)
 
 @app.route("/set_fields", methods=["POST"])
-def set_fields()
+def set_fields():
 	if service_obj is None:
 		raise Exception("Service is not undefined.")
 
