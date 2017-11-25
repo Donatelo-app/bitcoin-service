@@ -20,7 +20,7 @@ def bitcoin_balance(address):
 		return 0
 
 
-@app.route("update_cover")
+@app.route("/update_cover")
 def update_cover():
 	groups = Service.mongo.find_all({"activation":True})
 	for group in groups:
