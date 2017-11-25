@@ -1,4 +1,5 @@
 import core
+import requests
 
 service = core.Service("bitcoin-service")
 app = core.app
@@ -22,9 +23,8 @@ def bitcoin_balance(address):
 
 @app.route("/update_cover")
 def update_cover():
-	groups = service.mongo.find_all({"activation":True})
-	for group in groups:
-		new_btc_value = float(bitcoin_balance(group["fields"]["bitcoin_adress"]))
+	for group in service.mongo.find({"activation":True}):
+		new_btc_value = int(bitcoin_balance(group["fields"]["bitcoin_adress"]))
 		old_btc_value = service.get_varible(group["group_id"], "btc")
 		
 		if new_btc_value == old_btc_value:
