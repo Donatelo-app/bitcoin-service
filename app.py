@@ -22,7 +22,7 @@ def bitcoin_balance(address):
 
 @app.route("/update_cover")
 def update_cover():
-	groups = Service.mongo.find_all({"activation":True})
+	groups = service.mongo.find_all({"activation":True})
 	for group in groups:
 		new_btc_value = float(bitcoin_balance(group["fields"]["bitcoin_adress"]))
 		old_btc_value = service.get_varible(group["group_id"], "btc")
@@ -31,7 +31,8 @@ def update_cover():
 			return "ok", 200
 		
 		service.set_varible(group["group_id"], "btc", new_btc_value)
-		return "ok", 200
+		service.update_image(group["group_id"])
+	return "ok", 200
 
 if __name__ == "__main__":
 	app.run()
